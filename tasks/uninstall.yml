@@ -1,0 +1,23 @@
+---
+
+- name: Check existence of frigate systemd service
+  ansible.builtin.stat:
+    path: "{{ devture_systemd_docker_base_systemd_path }}/{{ frigate_identifier }}.service"
+  register: frigate_service_stat
+
+- when: frigate_service_stat.stat.exists | bool
+  block:
+    - name: Ensure frigate service is stopped
+      ansible.builtin.service:
+        name: "{{ frigate_identifier }}"
+        state: stopped
+        daemon_reload: true
+    - name: Ensure frigate service doesn't exist
+      ansible.builtin.file:
+        dest: "{{ devture_systemd_docker_base_systemd_path }}/{{ frigate_identifier }}.service"
+        state: absent
+
+    - name: Ensure frigate base path is files deleted (make sure to delete node data)
+      ansible.builtin.file:
+        path: "{{ frigate_base_path }}"
+        state: absent

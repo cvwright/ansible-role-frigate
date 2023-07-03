@@ -1,0 +1,90 @@
+---
+
+frigate_enabled: true
+frigate_identifier: frigate
+
+frigate_uid: ''
+frigate_gid: ''
+
+frigate_base_path: "/{{ frigate_identifier }}"
+frigate_config_path: "{{ frigate_base_path }}/config"
+frigate_data_path: "{{ frigate_base_path }}/data"
+frigate_log_path: "{{ frigate_base_path }}/log"
+
+frigate_systemd_required_services_list: ['docker.service', 'rumqttd.service']
+
+frigate_version: "stable"
+
+frigate_container_image: "{{ frigate_container_image_registry_prefix }}blakeblackshear/frigate:{{ frigate_container_image_tag }}"
+frigate_container_image_registry_prefix: ghcr.io/
+frigate_container_image_tag: "{{ frigate_version }}"
+frigate_container_image_force_pull: "{{ frigate_container_image.endswith(':latest') }}"
+
+frigate_container_network: '{{ frigate_identifier }}'
+
+# The port number in the container
+frigate_container_http_port: 5000
+
+# Controls whether the frigate container exposes its HTTP port (as defined by `frigate_container_http_port`).
+#
+# Takes an "<ip>:<port>" or "<port>" value (e.g. "127.0.0.1:8731"), or empty string to not expose.
+frigate_container_http_host_bind_port: "5000"
+
+# A list of additional container networks that the container would be connected to.
+# The role does not create these networks, so make sure they already exist.
+# Use this to expose this container to a reverse proxy, which runs in a different container network.
+frigate_container_additional_networks: []
+
+# MQTT configuration
+frigate_mqtt_enabled: True
+frigate_mqtt_server: "localhost"
+frigate_mqtt_port: 1883
+frigate_mqtt_topic_prefix: "frigate"
+frigate_mqtt_client_id: "frigate"
+frigate_mqtt_user: "frigate"
+frigate_mqtt_stats_interval: 60
+
+# Log levels
+frigate_default_log_level: info
+frigate_event_log_level: debug
+
+# Birdseye
+frigate_birdseye_enabled: True
+frigate_birdseye_restream: False
+frigate_birdseye_width: 1280
+frigate_birdseye_height: 720
+frigate_birdseye_quality: 8
+frigate_birdseye_mode: "objects"
+
+# Detect
+frigate_detect_enabled: True
+frigate_detect_width: 1280
+frigate_detect_height: 720
+frigate_detect_fps: 5
+frigate_detect_max_disappeared: 25
+
+# Motion
+frigate_motion_threshold: 25
+frigate_motion_contour_area: 30
+
+# Record
+frigate_record_enabled: False
+frigate_record_expire_interval: 60
+frigate_record_retain_days: 0
+frigate_record_retain_mode: all
+
+# Snapshots
+frigate_snapshots_enabled: False
+frigate_snapshots_clean_copy: True
+frigate_snapshots_timestamp: False
+frigate_snapshots_bounding_box: False
+frigate_snapshots_crop: False
+frigate_snapshots_height: 175
+frigate_snapshots_required_zones: []
+
+# UI 
+frigate_ui_timezone: America/Denver
+frigate_ui_use_experimental: False
+
+# Telemetry
+frigate_telemtry_version_check: True

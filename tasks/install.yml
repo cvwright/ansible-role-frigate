@@ -1,0 +1,31 @@
+---
+
+- name: Ensure frigate network is created in Docker
+  community.docker.docker_network:
+    name: "{{ frigate_container_network }}"
+    driver: bridge
+
+
+- name: Ensure frigate paths exists
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: 0700
+    owner: "{{ frigate_uid }}"
+    group: "{{ frigate_gid }}"
+  with_items:
+    - {path: "{{ frigate_base_path }}", when: true}
+    - {path: "{{ frigate_config_path }}", when: true}
+    - {path: "{{ frigate_data_path }}", when: true}
+    - {path: "{{ frigate_log_path }}", when: true}
+
+- name: Ensure frigate container image is pulled
+  community.docker.docker_image:
+    name: "{{ frigate_container_image }}"
+    source: "{{ 'pull' if ansible_version.major > 2 or ansible_version.minor > 7 else omit }}"
+
+- name: Ensure frigate.service installed
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/systemd/frigate.service.j2"
+    dest: "{{ devture_systemd_docker_base_systemd_path }}/{{ frigate_identifier }}.service"
+    mode: 0644
