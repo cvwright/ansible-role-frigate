@@ -62,6 +62,9 @@ frigate_birdseye_height: 720
 frigate_birdseye_quality: 8
 frigate_birdseye_mode: "objects"
 
+# FFMPEG and hardware acceleration
+frigate_ffmpeg_hwaccel_args: []
+
 # Detect
 frigate_detect_enabled: True
 frigate_detect_width: 1280

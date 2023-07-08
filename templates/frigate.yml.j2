@@ -117,7 +117,7 @@ ffmpeg:
   global_args: -hide_banner -loglevel warning -threads 2
   # Optional: global hwaccel args (default: shown below)
   # NOTE: See hardware acceleration docs for your specific device
-  hwaccel_args: []
+  hwaccel_args: {{ frigate_ffmpeg_hwaccel_args }}
   # Optional: global input args (default: shown below)
   input_args: preset-rtsp-generic
   # Optional: global output args
