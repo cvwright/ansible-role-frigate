@@ -1,3 +1,4 @@
+{% if frigate_mqtt_enabled | bool %}
 mqtt:
   # Optional: Enable mqtt server (default: shown below)
   #enabled: True
@@ -51,6 +52,7 @@ mqtt:
   # Optional: interval in seconds for publishing stats (default: shown below)
   #stats_interval: 60
   stats_interval: {{ frigate_mqtt_stats_interval }}
+{% endif %}
 
 # Optional: Detectors configuration. Defaults to a single CPU detector
 detectors:

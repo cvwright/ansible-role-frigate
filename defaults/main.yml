@@ -36,12 +36,13 @@ frigate_container_http_host_bind_port: "5000"
 frigate_container_additional_networks: []
 
 # MQTT configuration
-frigate_mqtt_enabled: True
+frigate_mqtt_enabled: false
 frigate_mqtt_server: "localhost"
 frigate_mqtt_port: 1883
 frigate_mqtt_topic_prefix: "frigate"
 frigate_mqtt_client_id: "frigate"
 frigate_mqtt_user: "frigate"
+# User should configure frigate_mqtt_password
 frigate_mqtt_stats_interval: 60
 
 # Log levels

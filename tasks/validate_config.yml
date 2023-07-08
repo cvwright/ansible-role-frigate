@@ -7,3 +7,12 @@
   when: "vars[item] == ''"
   with_items:
     - frigate_cameras
+
+- name: Fail if frigate MQTT is enabled but no MQTT password
+  ansible.builtin.fail:
+    msg: >-
+      You need to define an MQTT password for Frigate (`{{ item }}`) in order to use Frigate with MQTT.
+  when: frigate_mqtt_enabled | bool
+  with_items:
+    - frigate_mqtt_password
+
