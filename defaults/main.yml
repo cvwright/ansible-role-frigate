@@ -45,6 +45,11 @@ frigate_mqtt_user: "frigate"
 # User should configure frigate_mqtt_password
 frigate_mqtt_stats_interval: 60
 
+# Detectors
+frigate_detectors:
+  CPU:
+    type: cpu
+
 # Log levels
 frigate_default_log_level: info
 frigate_event_log_level: debug

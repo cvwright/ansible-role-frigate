@@ -55,15 +55,7 @@ mqtt:
 {% endif %}
 
 # Optional: Detectors configuration. Defaults to a single CPU detector
-detectors:
-  # Required: name of the detector
-  detector_name:
-    # Required: type of the detector
-    # Frigate provided types include 'cpu', 'edgetpu', and 'openvino' (default: shown below)
-    # Additional detector types can also be plugged in.
-    # Detectors may require additional configuration.
-    # Refer to the Detectors configuration page for more information.
-    type: cpu
+detectors: {{ frigate_detectors }}
 
 # Optional: Database configuration
 database:
