@@ -6,13 +6,14 @@
     driver: bridge
 
 
-- name: Ensure frigate paths exists
+- name: Ensure frigate paths exist
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: directory
-    mode: 0700
+    mode: "0750"
     owner: "{{ frigate_uid }}"
     group: "{{ frigate_gid }}"
+  when: item.when | bool
   with_items:
     - {path: "{{ frigate_base_path }}", when: true}
     - {path: "{{ frigate_config_path }}", when: true}
