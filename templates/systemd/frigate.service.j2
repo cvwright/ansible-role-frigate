@@ -29,6 +29,9 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
                 -p 8555:8555/tcp \
                 -p 8555:8555/udp \
                 --network={{ frigate_container_network }} \
+                {% for frigate_environment_var in frigate_environment_vars %}
+                -e {{ frigate_environment_var }} \
+                {% endfor %}
                 {{ frigate_container_image }}
 
 {% for network in frigate_container_additional_networks %}

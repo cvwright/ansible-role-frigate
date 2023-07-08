@@ -35,6 +35,9 @@ frigate_container_http_host_bind_port: "0.0.0.0:5000"
 # Use this to expose this container to a reverse proxy, which runs in a different container network.
 frigate_container_additional_networks: []
 
+# A list of environment variables to be passed to the container.
+frigate_environment_vars: []
+
 # MQTT configuration
 frigate_mqtt_enabled: false
 frigate_mqtt_server: "localhost"
