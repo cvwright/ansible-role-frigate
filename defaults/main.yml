@@ -88,4 +88,4 @@ frigate_ui_timezone: America/Denver
 frigate_ui_use_experimental: False
 
 # Telemetry
-frigate_telemtry_version_check: True
+frigate_telemetry_version_check: False
