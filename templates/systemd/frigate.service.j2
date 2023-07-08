@@ -21,7 +21,6 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
                 --mount type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000 \
                 -v {{ frigate_config_path }}:/config \
                 -v {{ frigate_data_path }}:/media/frigate \
-                -v {{ frigate_log_path }}:/var/log \
                 -v /etc/localtime:/etc/localtime:ro \
                 {% if frigate_container_http_host_bind_port %}
                 -p {{ frigate_container_http_host_bind_port }}:{{ frigate_container_http_port }} \
