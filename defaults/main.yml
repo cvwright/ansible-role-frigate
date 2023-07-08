@@ -83,6 +83,10 @@ frigate_snapshots_crop: False
 frigate_snapshots_height: 175
 frigate_snapshots_required_zones: []
 
+# Live
+frigate_live_enabled: True
+# User is responsible for setting frigate_live_stream_name
+
 # UI 
 frigate_ui_timezone: America/Denver
 frigate_ui_use_experimental: False

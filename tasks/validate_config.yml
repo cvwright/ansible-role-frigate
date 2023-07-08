@@ -12,7 +12,14 @@
   ansible.builtin.fail:
     msg: >-
       You need to define an MQTT password for Frigate (`{{ item }}`) in order to use Frigate with MQTT.
-  when: frigate_mqtt_enabled | bool
+  when: frigate_mqtt_enabled | bool and vars[item] == ''
   with_items:
     - frigate_mqtt_password
 
+- name: Fail if frigate live stream is enabled but no stream name
+  ansible.builtin.fail:
+    msg: >-
+      You need to define a stream name for Frigate (`{{ item }}`) in order to enable live streaming.
+  when: frigate_live_enabled | bool and vars[item] == ''
+  with_items:
+    - frigate_live_stream_name
