@@ -1,9 +1,9 @@
-{% if frigate_mqtt_enabled | bool %}
 mqtt:
   # Optional: Enable mqtt server (default: shown below)
   #enabled: True
   enabled: {{ frigate_mqtt_enabled }}
 
+{% if frigate_mqtt_enabled | bool %}
   # Required: host name
   #host: mqtt.server.com
   host: "{{ frigate_mqtt_server }}"
@@ -395,10 +395,6 @@ snapshots:
 rtmp:
   # Optional: Enable the RTMP stream (default: False)
   enabled: False
-
-# Optional: Restream configuration
-# Uses https://github.com/AlexxIT/go2rtc (v1.2.0)
-go2rtc:
 
 {% if frigate_live_enabled | bool %}
 # Optional: jsmpeg stream configuration for WebUI
