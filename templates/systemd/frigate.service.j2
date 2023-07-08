@@ -22,6 +22,9 @@ ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
                 -v {{ frigate_config_path }}:/config \
                 -v {{ frigate_data_path }}:/media/frigate \
                 -v /etc/localtime:/etc/localtime:ro \
+                {% for frigate_device in frigate_devices %}
+                --device {{ frigate_device }} \
+                {% endfor %}
                 {% if frigate_container_http_host_bind_port %}
                 -p {{ frigate_container_http_host_bind_port }}:{{ frigate_container_http_port }} \
                 {% endif %}
