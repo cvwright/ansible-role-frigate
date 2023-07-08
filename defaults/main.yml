@@ -11,7 +11,7 @@ frigate_config_path: "{{ frigate_base_path }}/config"
 frigate_data_path: "{{ frigate_base_path }}/data"
 frigate_log_path: "{{ frigate_base_path }}/log"
 
-frigate_systemd_required_services_list: ['docker.service', 'rumqttd.service']
+frigate_systemd_required_services_list: ['docker.service']
 
 frigate_version: "stable"
 
