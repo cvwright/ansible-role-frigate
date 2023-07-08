@@ -84,7 +84,7 @@ frigate_snapshots_height: 175
 frigate_snapshots_required_zones: []
 
 # Live
-frigate_live_enabled: True
+frigate_live_enabled: False
 # User is responsible for setting frigate_live_stream_name
 
 # UI 
