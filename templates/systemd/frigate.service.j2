@@ -14,9 +14,9 @@ ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ devture_s
 ExecStartPre={{ devture_systemd_docker_base_host_command_docker }} create \
                 --rm \
                 --name={{ frigate_identifier }} \
+                --privileged \
                 --log-driver=none \
                 --user={{ frigate_uid }}:{{ frigate_gid }} \
-                --cap-drop=ALL \
                 --shm-size=64m \
                 --mount type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000 \
                 -v {{ frigate_config_path }}:/config \
