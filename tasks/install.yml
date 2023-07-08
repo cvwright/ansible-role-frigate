@@ -20,6 +20,14 @@
     - {path: "{{ frigate_data_path }}", when: true}
     - {path: "{{ frigate_log_path }}", when: true}
 
+- name: Ensure frigate configuration is deployed
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/frigate.yml.j2"
+    dest: "{{ frigate_config_path }}/config.yml"
+    owner: "{{ frigate_uid }}"
+    group: "{{ frigate_gid }}"
+    mode: 0640
+
 - name: Ensure frigate container image is pulled
   community.docker.docker_image:
     name: "{{ frigate_container_image }}"
