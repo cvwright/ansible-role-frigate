@@ -62,8 +62,8 @@ frigate_default_log_level: info
 frigate_event_log_level: debug
 
 # Birdseye
-frigate_birdseye_enabled: True
-frigate_birdseye_restream: False
+frigate_birdseye_enabled: true
+frigate_birdseye_restream: false
 frigate_birdseye_width: 1280
 frigate_birdseye_height: 720
 frigate_birdseye_quality: 8
@@ -73,7 +73,7 @@ frigate_birdseye_mode: "objects"
 frigate_ffmpeg_hwaccel_args: []
 
 # Detect
-frigate_detect_enabled: True
+frigate_detect_enabled: true
 frigate_detect_width: 1280
 frigate_detect_height: 720
 frigate_detect_fps: 5
@@ -84,27 +84,27 @@ frigate_motion_threshold: 25
 frigate_motion_contour_area: 30
 
 # Record
-frigate_record_enabled: False
+frigate_record_enabled: false
 frigate_record_expire_interval: 60
 frigate_record_retain_days: 0
 frigate_record_retain_mode: all
 
 # Snapshots
-frigate_snapshots_enabled: False
-frigate_snapshots_clean_copy: True
-frigate_snapshots_timestamp: False
-frigate_snapshots_bounding_box: False
-frigate_snapshots_crop: False
+frigate_snapshots_enabled: false
+frigate_snapshots_clean_copy: true
+frigate_snapshots_timestamp: false
+frigate_snapshots_bounding_box: false
+frigate_snapshots_crop: false
 frigate_snapshots_height: 175
 frigate_snapshots_required_zones: []
 
 # Live
-frigate_live_enabled: False
+frigate_live_enabled: false
 # User is responsible for setting frigate_live_stream_name
 
 # UI 
 frigate_ui_timezone: America/Denver
-frigate_ui_use_experimental: False
+frigate_ui_use_experimental: false
 
 # Telemetry
-frigate_telemetry_version_check: False
+frigate_telemetry_version_check: false
