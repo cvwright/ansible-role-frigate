@@ -28,6 +28,14 @@
     group: "{{ frigate_gid }}"
     mode: 0640
 
+- name: Ensure frigate environment file is deployed
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/env.j2"
+    dest: "{{ frigate_env_path }}"
+    owner: "{{ frigate_uid }}"
+    group: "{{ frigate_gid }}"
+    mode: 0640
+
 - name: Ensure frigate container image is pulled
   community.docker.docker_image:
     name: "{{ frigate_container_image }}"
